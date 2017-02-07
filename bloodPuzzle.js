@@ -21,3 +21,44 @@ function insertEmptyPositions(emptyPositions) {
     }
   }
 }
+
+
+function assignAllelePositions() {
+  for( let i = 0; i < gameBoard.length; i++ ){
+    for (let j = 0; j < gameBoard[i].length; j ++){
+      // if space is not supposed to be empty assign it a, b or o
+      if(gameBoard[i][j] !== "x"){
+        let randomNumber = Math.floor(Math.random() * 2);
+        let randomAllele;
+        switch (randomNumber) {
+          case 0:
+            randomAllele = "a"
+            break;
+          case 1:
+            randomAllele = "b"
+            break;
+          default:
+            randomAllele = "o"
+        }
+        gameBoard[i][j] = randomAllele;
+      }
+    }
+  }
+}
+
+//  Fisher-Yates Shuffle
+function shuffle(array) {
+    let counter = array.length;
+    // While there are elements in the array
+    while (counter > 0) {
+        // Pick a random index
+        let index = Math.floor(Math.random() * counter);
+        // Decrease counter by 1
+        counter--;
+        // And swap the last element with it
+        let temp = array[counter];
+        array[counter] = array[index];
+        array[index] = temp;
+    }
+    return array;
+}
