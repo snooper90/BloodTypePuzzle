@@ -104,7 +104,7 @@
     };
     let bloodTypesRow = splitBloodtypes(bloodTypeRow);
     let bloodTypesCol = splitBloodtypes(bloodTypeCol);
-
+    console.log(bloodTypeCol);
 
   }
 
@@ -112,14 +112,27 @@
     let bloodTypes = [[],[],[],[],[]];
     for( let i = 0; i < gameBoard.length; i++ ){
       let subArr = arr.splice(0, 3);
-      // consider setting the bloodtype here
-      bloodTypes[i] = [[subArr[1], subArr[2]], [subArr[2], subArr[3]]]
-    }
+      let firstBloodType = findBloodtype(subArr[0], subArr[1])
+      console.log("firstBloodType: " + firstBloodType);
+      let secondBloodType = findBloodtype(subArr[1], subArr[2])
+      bloodTypes[i] = [firstBloodType, secondBloodType]
+    };
+    console.log(bloodTypes);
     return bloodTypes
-
   }
 
-
+  function findBloodtype(a, b){
+    console.log("findBloodtype a & b : " + a + " " + b);
+    if((a === "a" && b === "a") || (a === "o" && b === "a") || (a === "a" && b === "o")){
+      return "A"
+    }else if((a === "a" && b === "b") || (a === "b" && b === "a")){
+      return "AB"
+    }else if((a === "b" && b === "b") || (a === "o" && b === "b") || (a === "b" && b === "o")){
+      return "B"
+    }else{
+      return "O"
+    }
+  }
 
   insertEmptyPositions(emptyPositions);
   assignAllelePositions();
