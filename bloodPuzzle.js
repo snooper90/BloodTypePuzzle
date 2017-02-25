@@ -18,13 +18,8 @@ class BloodTypePuzzle {
   createGameSession(){
     // Fill with the steps to create the finished board
     this.insertEmptyPositions(this.emptyPositions)
-    console.log(this.gameBoard);
     this.assignAllelePositions()
-    console.log(this.gameBoard);
     this.findBloodTypes()
-    console.log(this.bloodTypesCol);
-    console.log(this.bloodTypesRow);
-
   }
 
   insertEmptyPositions(positions) {
@@ -138,8 +133,6 @@ class BloodTypePuzzle {
       return "O"
     }
   }
-
-
 }
 
-const game = new BloodTypePuzzle();
+export default BloodTypePuzzle;
