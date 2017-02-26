@@ -135,4 +135,6 @@ class BloodTypePuzzle {
   }
 }
 
-export default BloodTypePuzzle;
+let puzzle = new BloodTypePuzzle();
+
+module.exports = puzzle
